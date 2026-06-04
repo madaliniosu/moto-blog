@@ -17,8 +17,6 @@ const renderedTrips = await Promise.all(
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-        ></script>
         <title>Moto Blog</title>
     </head>
     <body class="bg-zinc-950 text-zinc-100 min-h-screen">
@@ -69,16 +67,18 @@ const renderedTrips = await Promise.all(
                 ))
             }
         </main>
-        <script is:inline>
-            if (window.netlifyIdentity) {
-                window.netlifyIdentity.on("init", function (user) {
-                    if (!user) {
-                        window.netlifyIdentity.on("login", function () {
-                            document.location.href = "/admin/";
-                        });
-                    }
-                });
-            }
+        <script>
+            import NetlifyIdentity from "netlify-identity-widget";
+
+            NetlifyIdentity.on("init", (user) => {
+                if (!user) {
+                    NetlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+
+            NetlifyIdentity.init();
         </script>
     </body>
 </html>
