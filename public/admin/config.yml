@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: trips
+    label: Trips
+    folder: src/content/trips
+    path: "{{slug}}/index"
+    create: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Description, name: description, widget: text }
+      - { label: YouTube Video ID, name: youtube, widget: string, required: false }
+      - label: Photos
+        name: photos
+        widget: list
+        required: false
+        field: { label: Photo, name: photo, widget: image }
+      - { label: Body, name: body, widget: markdown }

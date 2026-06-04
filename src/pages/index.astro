@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from "astro:content";
+
+const trips = await getCollection("trips");
+trips.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const renderedTrips = await Promise.all(
+    trips.map(async (trip) => {
+        const { Content } = await render(trip);
+        return { trip, Content };
+    }),
+);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Moto Blog</title>
+    </head>
+    <body class="bg-zinc-950 text-zinc-100 min-h-screen">
+        <header class="max-w-4xl mx-auto px-6 py-12">
+            <h1 class="text-4xl font-bold tracking-tight">Moto Blog</h1>
+            <p class="text-zinc-400 mt-2">Weekend rides & open roads</p>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-6 pb-16 space-y-16">
+            {
+                renderedTrips.map(({ trip, Content }) => (
+                    <article class="border-t border-zinc-800 pt-10">
+                        <h2 class="text-2xl font-semibold">
+                            {trip.data.title}
+                        </h2>
+                        <p class="text-zinc-500 text-sm mt-1">
+                            {trip.data.date.toDateString()}
+                        </p>
+                        <p class="text-zinc-300 mt-4 leading-relaxed">
+                            {trip.data.description}
+                        </p>
+                        <div class="text-zinc-300 mt-4 leading-relaxed prose prose-invert">
+                            <Content />
+                        </div>
+
+                        {trip.data.photos && trip.data.photos.length > 0 && (
+                            <div class="grid grid-cols-3 gap-2 mt-6">
+                                {trip.data.photos.map((photo) => (
+                                    <img
+                                        src={photo}
+                                        alt=""
+                                        class="w-full h-48 object-cover rounded"
+                                    />
+                                ))}
+                            </div>
+                        )}
+
+                        {trip.data.youtube && (
+                            <div class="mt-6 aspect-video">
+                                <iframe
+                                    src={`https://www.youtube.com/embed/${trip.data.youtube}`}
+                                    class="w-full h-full rounded"
+                                    allowfullscreen
+                                />
+                            </div>
+                        )}
+                    </article>
+                ))
+            }
+        </main>
+    </body>
+</html>
