@@ -70,12 +70,8 @@ const renderedTrips = await Promise.all(
         <script>
             import NetlifyIdentity from "netlify-identity-widget";
 
-            NetlifyIdentity.on("init", (user) => {
-                if (!user) {
-                    NetlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
+            NetlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
             });
 
             NetlifyIdentity.init();
