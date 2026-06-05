@@ -85,15 +85,19 @@ const renderedTrips = await Promise.all(
                         <div class="text-zinc-700 dark:text-zinc-300 mt-4 leading-relaxed prose dark:prose-invert">
                             <Content />
                         </div> */}
-                        <h2 class="text-2xl font-semibold">
+                        {/* <h2 class="text-2xl font-semibold">
                             {trip.data.title}
-                        </h2>
+                        </h2> */}
 
-                        <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1">
+                        {/* <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1">
                             {trip.data.date.toLocaleDateString("en-GB")}
-                            {trip.data.date_end &&
-                                ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
-                        </p>
+                            {trip.data.date_end && ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
+							</p> */}
+							
+                        <h2 class="text-2xl font-semibold">
+                            {trip.data.date.toLocaleDateString("en-GB")}
+                            {trip.data.date_end && ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
+                        </h2>
 
                         {(trip.data.distance || trip.data.elevation) && (
                             <div class="flex gap-4 mt-2 text-sm text-zinc-500 dark:text-zinc-400">
