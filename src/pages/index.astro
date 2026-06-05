@@ -16,6 +16,12 @@ const renderedTrips = await Promise.all(
 <html lang="en" class="dark">
     <head>
         <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <title>Moto Blog</title>
@@ -93,10 +99,11 @@ const renderedTrips = await Promise.all(
                             {trip.data.date.toLocaleDateString("en-GB")}
                             {trip.data.date_end && ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
 							</p> */}
-							
+
                         <h2 class="text-2xl font-semibold">
                             {trip.data.date.toLocaleDateString("en-GB")}
-                            {trip.data.date_end && ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
+                            {trip.data.date_end &&
+                                ` — ${trip.data.date_end.toLocaleDateString("en-GB")}`}
                         </h2>
 
                         {(trip.data.distance || trip.data.elevation) && (
