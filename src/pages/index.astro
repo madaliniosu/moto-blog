@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import "../styles/global.css";
 
 const trips = await getCollection("trips");
 trips.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
