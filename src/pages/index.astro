@@ -46,11 +46,17 @@ const renderedTrips = await Promise.all(
                         {trip.data.photos && trip.data.photos.length > 0 && (
                             <div class="grid grid-cols-3 gap-2 mt-6">
                                 {trip.data.photos.map((photo) => (
-                                    <img
-                                        src={photo}
-                                        alt=""
-                                        class="w-full h-48 object-cover rounded"
-                                    />
+                                    <a
+                                        href={photo}
+                                        class="glightbox"
+                                        data-gallery={trip.id}
+                                    >
+                                        <img
+                                            src={photo}
+                                            alt=""
+                                            class="w-full h-48 object-cover rounded cursor-pointer"
+                                        />
+                                    </a>
                                 ))}
                             </div>
                         )}
@@ -68,13 +74,27 @@ const renderedTrips = await Promise.all(
                 ))
             }
         </main>
-        <script>
+        <!-- <script>
             import NetlifyIdentity from "netlify-identity-widget";
 
             NetlifyIdentity.on("login", () => {
                 document.location.href = "/admin/";
             });
 
+            NetlifyIdentity.init();
+        </script> -->
+        <script>
+            import GLightbox from "glightbox";
+            import "glightbox/dist/css/glightbox.css";
+
+            GLightbox({
+				selector: ".glightbox",
+			});
+
+            import NetlifyIdentity from "netlify-identity-widget";
+            NetlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+            });
             NetlifyIdentity.init();
         </script>
     </body>
