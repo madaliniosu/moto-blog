@@ -20,5 +20,10 @@ collections:
         name: photos
         widget: list
         required: false
-        field: { label: Photo, name: photo, widget: image }
+        field:
+          label: Photo
+          name: photo
+          widget: image
+          media_folder: /public/uploads
+          public_folder: /uploads
       - { label: Body, name: body, widget: markdown }

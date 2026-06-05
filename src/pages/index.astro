@@ -47,7 +47,7 @@ const renderedTrips = await Promise.all(
                             <div class="grid grid-cols-3 gap-2 mt-6">
                                 {trip.data.photos.map((photo) => (
                                     <img
-                                        src={photo}
+                                        src={`/uploads/${photo}`}
                                         alt=""
                                         class="w-full h-48 object-cover rounded"
                                     />
