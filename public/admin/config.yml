@@ -19,7 +19,10 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: End Date, name: date_end, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
       - { label: Description, name: description, widget: text }
+      - { label: Distance (km), name: distance, widget: number, required: false }
+      - { label: Elevation (m), name: elevation, widget: number, required: false }
       - { label: YouTube Video ID, name: youtube, widget: string, required: false }
       - label: Photos
         name: photos
@@ -29,4 +32,6 @@ collections:
           label: Photo
           name: photo
           widget: image
+          media_folder: /public/uploads
+          public_folder: /uploads
       - { label: Body, name: body, widget: markdown }

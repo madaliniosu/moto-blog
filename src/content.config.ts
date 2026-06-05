@@ -6,9 +6,12 @@ const trips = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
+    date_end: z.coerce.date().optional(),
     description: z.string(),
     youtube: z.string().optional(),
     photos: z.array(z.string()).optional(),
+    distance: z.number().optional(),
+    elevation: z.number().optional(),
   }),
 });
 
