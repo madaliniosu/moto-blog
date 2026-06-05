@@ -2,8 +2,13 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: public/uploads
-public_folder: /uploads
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dugnmvbnv
+    api_key: 573995755218881
+    upload_preset: moto-blog
+    folder: moto-trips
 
 collections:
   - name: trips
@@ -24,6 +29,4 @@ collections:
           label: Photo
           name: photo
           widget: image
-          media_folder: /public/uploads
-          public_folder: /uploads
       - { label: Body, name: body, widget: markdown }
