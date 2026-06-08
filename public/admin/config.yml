@@ -7,7 +7,7 @@ media_library:
   config:
     cloud_name: dugnmvbnv
     api_key: 573995755218881
-    upload_preset: moto-blog
+    upload_preset: Root-moto
     folder: moto-trips
 
 collections:
